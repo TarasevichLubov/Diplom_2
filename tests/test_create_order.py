@@ -1,5 +1,6 @@
 from users.api_user import ApiClient
-from data import TestData, EndPointData, ConstantData
+from data import TestData, EndPointData
+from const_data import ConstantData
 import allure
 
 
@@ -9,7 +10,7 @@ class TestOrders:
 
     @allure.title("Успешное создание заказа с валидными данными с ингредиентами.")
     @allure.description("С авторизацией заказ создается.")
-    def test_create_order_with_authorization_true(self, register_new_user_and_return_login_password):
+    def test_create_order_with_authorization_true(self):
         api = ApiClient()
         response_login = api.post(self.path_login, ConstantData.BASE_USER)
         auth = response_login.json()['accessToken']

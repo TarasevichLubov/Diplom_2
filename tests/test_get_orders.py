@@ -16,6 +16,7 @@ class TestGetUserOrders:
         auth = response_login.json()['accessToken']
         response_get_order = api.get(self.path, auth)
         assert response_get_order.status_code == 200
+        assert response_get_order.json()["success"] == True
 
     @allure.title("Получение данных заказа.")
     @allure.description("Неавторизованному пользователю список заказов недоступен.")
