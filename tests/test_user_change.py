@@ -9,7 +9,7 @@ class TestUserChange:
 
     path = EndPointData.PATH_USER_INFO
     path_login = EndPointData.PATH_USER_LOGIN
-    TOKEN = None
+    token = None
 
     def setup_method(self):
         self.run_teardown = True
@@ -24,7 +24,7 @@ class TestUserChange:
                         "email": register_new_user_and_return_login_password[2]}
         response_login = api.post(self.path_login, payload_data)
         auth = response_login.json()['accessToken']
-        self.TOKEN = auth
+        self.token = auth
         response = api.patch(self.path, update_data, auth)
         assert response.json()["success"] == True
 
@@ -41,4 +41,4 @@ class TestUserChange:
     def teardown_method(self):
         if self.run_teardown:
             api = ApiClient()
-            api.delete(self.path_login, self.TOKEN)
+            api.delete(self.path_login, self.token)

@@ -1,6 +1,5 @@
 from users.api_user import ApiClient
-from data import TestData, EndPointData
-from const_data import ConstantData
+from data import TestData, EndPointData, ConstantData
 import allure
 
 
